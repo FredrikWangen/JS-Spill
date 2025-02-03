@@ -1,0 +1,26 @@
+:root {
+    --vanlig: #white;
+    --feil_bokstav: #3a3a3c;
+    --feil_plass: #b59f3b;
+    --riktig: #538d4e;
+  }
+  body{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+.master{
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px 100px;
+    grid-template-rows:100px 100px 100px 100px 100px 100px ;
+    gap: 10px;
+    
+
+}
+
+  .master>div{
+    border: lightgray solid 2px;
+    padding: 20px;
+    background-color:var(--vanlig);
+  }
