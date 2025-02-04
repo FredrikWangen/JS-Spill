@@ -10,45 +10,37 @@
 
 <body>
     <h1>Freddle</h1>
-    <div class="master">
-       
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+    <div class="master"></div>
+
+    <script>
+        const masterEL = document.querySelector(".master");
+
+        let antallBokser = 30;
+        let boksID = [];
+
+        for (let i = 0; i < antallBokser; i++) {
+            const divEl = document.createElement("div");
+            divEl.id = "boks" + i;
+            masterEL.appendChild(divEl);
+
+            
+
+            boksID.push(divEl);
+
+            
+                
+
+            
+
+
+
+        }
+        boksID[2].innerHTML = "A"
         
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+
+
         
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-       
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-       
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        
-    </div>
+    </script>
 </body>
 
 </html>
