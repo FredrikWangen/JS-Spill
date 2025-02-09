@@ -22,20 +22,29 @@
             const divEl = document.createElement("div");
             divEl.id = "boks" + i;
             masterEL.appendChild(divEl);
-
-            
-
             boksID.push(divEl);
 
-            
-                
-
-            
-
-
-
         }
-        boksID[2].innerHTML = "A"
+        
+        let GjelendeBokstav = 0
+
+        document.addEventListener("keydown", function(event){
+            let key = event.key.toUpperCase()
+
+            if(GjelendeBokstav<antallBokser && key.match(/^[A-Z]$/)){
+                boksID[GjelendeBokstav].innerText = key 
+                GjelendeBokstav++
+                
+            }
+            else if(event.key == "Backspace" && GjelendeBokstav > 0){
+                boksID[GjelendeBokstav].innerText = ""
+                GjelendeBokstav = GjelendeBokstav - 1 
+                
+            } 
+            
+
+
+        })
         
 
 
