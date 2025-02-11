@@ -25,26 +25,43 @@
             boksID.push(divEl);
 
         }
+
+        let RundensOrd = "Trace"
+        
         
         let GjelendeBokstav = 0
+        let RadStart = 0
 
         document.addEventListener("keydown", function(event){
-            let key = event.key.toUpperCase()
-
-            if(GjelendeBokstav<antallBokser && key.match(/^[A-Z]$/)){
-                boksID[GjelendeBokstav].innerText = key 
+            let bokstav = event.key.toUpperCase()
+        
+            if(bokstav.match(/^[A-Z]$/) && GjelendeBokstav < RadStart + 5  ){
+                boksID[GjelendeBokstav].innerText = bokstav 
                 GjelendeBokstav++
                 
             }
-            else if(event.key == "Backspace" && GjelendeBokstav > 0){
+            else if(event.key == "Backspace" &&  GjelendeBokstav > RadStart){
                GjelendeBokstav = GjelendeBokstav - 1  
                boksID[GjelendeBokstav].innerText = ""
                 
             } 
+            else if(event.key === "Enter" && GjelendeBokstav === RadStart + 5){
+                RadStart +=5
+                GjelendeBokstav = RadStart  
+                
+                
+                
+            }
+           
+               
+                 
+            
             
 
 
         })
+
+           
         
 
 
