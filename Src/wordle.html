@@ -6,6 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freddle</title>
     <link rel="stylesheet" href="main.css">
+
+    <style>
+        :root {
+            
+            --feil_bokstav: #3a3a3c;
+            --feil_plass: #b59f3b;
+            --riktig: #538d4e;
+        }
+
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        .master {
+            display: grid;
+            grid-template-columns: 100px 100px 100px 100px 100px;
+            grid-template-rows: 100px 100px 100px 100px 100px 100px;
+            gap: 10px;
+
+
+        }
+
+        .master>div {
+            border: lightgray solid 2px;
+            padding: 20px;
+            
+
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            font-size: x-large;
+        }
+
+        .riktig {
+            background-color: var(--riktig);
+        }
+
+        .feil {
+            background-color: var(--feil_bokstav);
+        }
+
+        .feilplassert {
+            background-color: var(--feil_plass);
+        }
+    </style>
 </head>
 
 <body>
@@ -29,35 +81,63 @@
         let RundensOrd = ["TRACE"]
 
         let GjelendeBokstav = 0
-        let RadStart = 0
+        let NyLinje = 0
 
-        document.addEventListener("keydown", function(event){
+
+        document.addEventListener("keydown", function (event) {
             let bokstav = event.key.toUpperCase()
-        
-            if(bokstav.match(/^[A-Z]$/) && GjelendeBokstav < RadStart + 5  ){
-                boksID[GjelendeBokstav].innerText = bokstav 
+
+            if (bokstav.match(/^[A-Z]$/) && GjelendeBokstav < NyLinje + 5) {
+                boksID[GjelendeBokstav].innerText = bokstav
                 GjelendeBokstav++
-                
+
             }
-            else if(event.key == "Backspace" &&  GjelendeBokstav > RadStart){
-               GjelendeBokstav = GjelendeBokstav - 1  
-               boksID[GjelendeBokstav].innerText = ""
-                
-            } 
-            else if(event.key === "Enter" && GjelendeBokstav === RadStart + 5){
-                RadStart +=5
-                GjelendeBokstav = RadStart  
-             
+            else if (event.key == "Backspace" && GjelendeBokstav > NyLinje) {
+                GjelendeBokstav = GjelendeBokstav - 1
+                boksID[GjelendeBokstav].innerText = ""
+
             }
-            
-                
+            else if (event.key === "Enter" && GjelendeBokstav === NyLinje + 5) {
+                sjekkOrd()
+                NyLinje += 5
+                GjelendeBokstav = NyLinje
+
+            }
+
+
         })
-
-           
         
+        function sjekkOrd() {
+            let RiktigBokstaver = RundensOrd[0].split("")
+            let gjettetOrd = []
+
+            for (let i = 0; i < RiktigBokstaver.length; i++) {
+                gjettetOrd.push(boksID[i + NyLinje].innerText)
+            }
+
+            for (let i = 0; i < 5; i++) {
+                let boks = boksID[i + NyLinje]
+                boks.classList.remove("riktig", "feilplassert", "feil")
+
+                if (gjettetOrd[i] === RiktigBokstaver[i]) {
+                    boks.classList.add("riktig")
+                }
+                else if (RiktigBokstaver.includes(gjettetOrd[i])) {
+                    boks.classList.add("feilplassert")
+                }
+                else {
+                    boks.classList.add("feil")
+                }
+            }
 
 
-        
+        }
+
+
+
+
+
+
     </script>
 </body>
 
