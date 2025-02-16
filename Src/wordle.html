@@ -5,11 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freddle</title>
-    <link rel="stylesheet" href="main.css">
-
     <style>
         :root {
-            
             --feil_bokstav: #3a3a3c;
             --feil_plass: #b59f3b;
             --riktig: #538d4e;
@@ -23,7 +20,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            
+        }
 
+        h1 {
+            margin-bottom: 20px;
         }
 
         .master {
@@ -31,31 +32,31 @@
             grid-template-columns: 100px 100px 100px 100px 100px;
             grid-template-rows: 100px 100px 100px 100px 100px 100px;
             gap: 10px;
-
-
         }
 
         .master>div {
-            border: lightgray solid 2px;
-            padding: 20px;
-            
-
+            border: 2px solid lightgray;
             display: flex;
             align-items: center;
-            justify-content: space-evenly;
+            justify-content: center;
             font-size: x-large;
+            font-weight: bold;
+            
         }
 
         .riktig {
             background-color: var(--riktig);
+            color: white;
         }
 
         .feil {
             background-color: var(--feil_bokstav);
+            color: white;
         }
 
         .feilplassert {
             background-color: var(--feil_plass);
+            color: white;
         }
     </style>
 </head>
@@ -65,69 +66,70 @@
     <div class="master"></div>
 
     <script>
-        const masterEL = document.querySelector(".master");
+        const masterEL = document.querySelector(".master")
 
-        let antallBokser = 30;
-        let boksID = [];
+        
+        let antallBokser = 30
+        let boksID = []
 
         for (let i = 0; i < antallBokser; i++) {
-            const divEl = document.createElement("div");
-            divEl.id = "boks" + i;
-            masterEL.appendChild(divEl);
-            boksID.push(divEl);
-
+            const divEl = document.createElement("div")
+            divEl.id = "boks" + i
+            masterEL.appendChild(divEl)
+            boksID.push(divEl)
         }
 
-        let RundensOrd = ["TRACE"]
-
+        
+        let RundensOrd = "TRACE"
         let GjelendeBokstav = 0
         let NyLinje = 0
 
-
+      
         document.addEventListener("keydown", function (event) {
             let bokstav = event.key.toUpperCase()
 
+            
             if (bokstav.match(/^[A-Z]$/) && GjelendeBokstav < NyLinje + 5) {
                 boksID[GjelendeBokstav].innerText = bokstav
                 GjelendeBokstav++
-
             }
+            
             else if (event.key == "Backspace" && GjelendeBokstav > NyLinje) {
-                GjelendeBokstav = GjelendeBokstav - 1
+                GjelendeBokstav--
                 boksID[GjelendeBokstav].innerText = ""
-
             }
+           
             else if (event.key === "Enter" && GjelendeBokstav === NyLinje + 5) {
                 sjekkOrd()
                 NyLinje += 5
                 GjelendeBokstav = NyLinje
-
             }
-
-
         })
 
+        
         function sjekkOrd() {
-            let RiktigBokstaver = RundensOrd[0].split("")
+            let RiktigBokstaver = RundensOrd.split("")
             let gjettetOrd = []
 
-
-           
-
-            for (let i = 0; i < RiktigBokstaver.length; i++) {
+          
+            for (let i = 0; i < 5; i++) {
                 gjettetOrd.push(boksID[i + NyLinje].innerText)
-                 
             }
-            console.log(gjettetOrd)
 
-            
+          
+            for (let i = 0; i < 5; i++) {
+                let boks = boksID[i + NyLinje]
+                boks.classList.remove("riktig", "feilplassert", "feil")
+
+                if (gjettetOrd[i] === RiktigBokstaver[i]) {
+                    boks.classList.add("riktig")
+                } else if (RiktigBokstaver.includes(gjettetOrd[i])) {
+                    boks.classList.add("feilplassert")
+                } else {
+                    boks.classList.add("feil")
+                }
+            }
         }
-
-
-
-
-
-
     </script>
 </body>
 
