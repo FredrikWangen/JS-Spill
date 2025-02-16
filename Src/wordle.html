@@ -106,31 +106,21 @@
 
 
         })
-        
+
         function sjekkOrd() {
             let RiktigBokstaver = RundensOrd[0].split("")
             let gjettetOrd = []
 
+
+           
+
             for (let i = 0; i < RiktigBokstaver.length; i++) {
                 gjettetOrd.push(boksID[i + NyLinje].innerText)
+                 
             }
+            console.log(gjettetOrd)
 
-            for (let i = 0; i < 5; i++) {
-                let boks = boksID[i + NyLinje]
-                boks.classList.remove("riktig", "feilplassert", "feil")
-
-                if (gjettetOrd[i] === RiktigBokstaver[i]) {
-                    boks.classList.add("riktig")
-                }
-                else if (RiktigBokstaver.includes(gjettetOrd[i])) {
-                    boks.classList.add("feilplassert")
-                }
-                else {
-                    boks.classList.add("feil")
-                }
-            }
-
-
+            
         }
 
 
