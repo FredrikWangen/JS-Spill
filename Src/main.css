@@ -1,10 +1,10 @@
 :root {
-  --vanlig: #white;
   --feil_bokstav: #3a3a3c;
   --feil_plass: #b59f3b;
   --riktig: #538d4e;
 }
-body{
+
+body {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -12,28 +12,81 @@ body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Merriweather", serif;
+  
   
 }
-.master{
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.master {
   display: grid;
   grid-template-columns: 100px 100px 100px 100px 100px;
-  grid-template-rows:100px 100px 100px 100px 100px 100px ;
+  grid-template-rows: 100px 100px 100px 100px 100px 100px;
   gap: 10px;
-  
-
 }
 
-.master>div{
-  border: lightgray solid 2px;
-  padding: 20px;
-  background-color:var(--vanlig);
-  
+.master>div {
+  border: 2px solid lightgray;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   font-size: x-large;
+  font-weight: bold;
+
 }
 
-.riktig{
+.riktig {
   background-color: var(--riktig);
+  color: white;
+  transition: 1s;
+}
+
+.feil {
+  background-color: var(--feil_bokstav);
+  color: white;
+  transition: 1s;
+}
+
+.feilplassert {
+  background-color: var(--feil_plass);
+  color: white;
+  transition: 1s;
+}
+
+.usynlig {
+  color: white;
+}
+
+.taper {
+  transition: 3s;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.ord {
+  font-size: x-large;
+  margin-bottom: 20px;
+  transition: 3s;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 40px;
+  
+}
+
+button:hover {
+  background-color: #45a049;
 }

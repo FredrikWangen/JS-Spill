@@ -5,87 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freddle</title>
-    <style>
-        :root {
-            --feil_bokstav: #3a3a3c;
-            --feil_plass: #b59f3b;
-            --riktig: #538d4e;
-        }
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
 
-        body {
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-
-        }
-
-        h1 {
-            margin-bottom: 20px;
-        }
-
-        .master {
-            display: grid;
-            grid-template-columns: 100px 100px 100px 100px 100px;
-            grid-template-rows: 100px 100px 100px 100px 100px 100px;
-            gap: 10px;
-        }
-
-        .master>div {
-            border: 2px solid lightgray;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: x-large;
-            font-weight: bold;
-
-        }
-
-        .riktig {
-            background-color: var(--riktig);
-            color: white;
-            transition: 1s;
-        }
-
-        .feil {
-            background-color: var(--feil_bokstav);
-            color: white;
-            transition: 1s;
-        }
-
-        .feilplassert {
-            background-color: var(--feil_plass);
-            color: white;
-            transition: 1s;
-        }
-
-        .usynlig {
-            color: white;
-        }
-
-        .taper {
-            transition: 3s;
-            font-size: xx-large;
-            font-weight: bolder;
-        }
-
-        .ord {
-            font-size: x-large;
-            margin-bottom: 20px;
-            transition: 3s;
-        }
-    </style>
 </head>
 
 <body>
     <h1>Freddle</h1>
     <div class="master"></div>
 
+
+
     <h2></h2>
     <p></p>
+    <button onclick="startSpill()">Nytt Ord</button>
 
 
     <script>
@@ -93,18 +26,6 @@
 
         const GameOver = document.querySelector("h2")
         const OrdsRunde = document.querySelector("p")
-
-
-        let antallBokser = 30
-        let boksID = []
-
-        for (let i = 0; i < antallBokser; i++) {
-            const divEl = document.createElement("div")
-            divEl.id = "boks" + i
-            masterEL.appendChild(divEl)
-            boksID.push(divEl)
-        }
-
         let ordbok = ["WHITE", "BRAVE", "CANDY", "DELTA", "PENIS", "FLAME", "GRAPE", "HASTE", "IVORY", "CRAWL",
             "KNOCK", "LEMON", "MANGO", "NOBLE", "OCEAN", "PRIDE", "QUILT", "RAVEN", "SPINE", "TOAST",
             "UMBRA", "MINER", "WHALE", "WHERE", "YIELD", "ZEBRA", "ADORE", "BEAST", "CHARM", "DRAIN",
@@ -112,16 +33,43 @@
             "ORBIT", "PEARL", "QUACK", "RUSTY", "SAUCE", "TRICK", "URBAN", "VOWEL", "WITTY", "XYLOS",
             "YOUTH", "ZESTY", "ANGRY", "BLAZE", "CRAFT", "SIXTH", "FROST", "GIANT", "LOSES",
             "INBOX", "JOINT", "SOUTH", "LATCH", "MIRTH", "NORTH", "OPERA", "PLUCK", "QUERY", "ROAST",
-            "STEEP", "TIGER", "UNDER", "VIRUS", "WAIVE", "YACHT", "ZONAL", "AMBER", "BRISK",
+            "DANCE", "TIGER", "UNDER", "VIRUS", "WAIVE", "YACHT", "ZONAL", "AMBER", "BRISK",
             "CLIMB", "THINK", "FLOCK", "GRASP", "JUDGE", "IMAGE", "JUMPY", "STAND", "LUCKY",
             "MOTEL", "NOVEL", "OPTIC", "PIANO", "QUIRK", "RISKY", "SHINY", "TOUGH", "UNCLE", "VIXEN", "TRACE", "CARGO", "BLACK"]
 
-        let tidfeldigTall = Math.floor(Math.random() * ordbok.length)
-        let RundensOrd = ordbok[tidfeldigTall]
+        let boksID = []
+        let antallBokser = 30
+
+        let RundensOrd = ""
+
         let GjelendeBokstav = 0
         let NyLinje = 0
 
         let spillFerdig = false
+
+
+
+        function startSpill() {
+            masterEL.innerHTML = ""
+            GameOver.innerHTML = ""
+            OrdsRunde.innerHTML = ""
+
+            boksID = []
+            GjelendeBokstav = 0
+            NyLinje = 0
+            spillFerdig = false
+
+            let tidfeldigTall = Math.floor(Math.random() * ordbok.length)
+            RundensOrd = ordbok[tidfeldigTall]
+
+            for (let i = 0; i < antallBokser; i++) {
+                const divEl = document.createElement("div")
+                divEl.id = "boks" + i
+                masterEL.appendChild(divEl)
+                boksID.push(divEl)
+            }
+        }
+
 
         document.addEventListener("keydown", function (event) {
             if (spillFerdig) return
@@ -190,7 +138,7 @@
             }
         }
 
-
+        startSpill()
 
     </script>
 </body>
