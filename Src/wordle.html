@@ -53,22 +53,28 @@
             masterEL.innerHTML = ""
             GameOver.innerHTML = ""
             OrdsRunde.innerHTML = ""
-
+            
             boksID = []
             GjelendeBokstav = 0
             NyLinje = 0
             spillFerdig = false
-
+            
+            document.activeElement.blur()
+            
             let tidfeldigTall = Math.floor(Math.random() * ordbok.length)
             RundensOrd = ordbok[tidfeldigTall]
-
+            
             for (let i = 0; i < antallBokser; i++) {
                 const divEl = document.createElement("div")
                 divEl.id = "boks" + i
+                divEl.innerText = ""
+                divEl.className = ""
                 masterEL.appendChild(divEl)
                 boksID.push(divEl)
             }
         }
+        
+        
 
 
         document.addEventListener("keydown", function (event) {
