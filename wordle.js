@@ -5,7 +5,7 @@ const OrdsRunde = document.querySelector("p")
 
 let ordbok = ["WHITE", "BRAVE", "CANDY", "DELTA", "PENIS", "FLAME", "GRAPE", "HASTE", "IVORY", "CRAWL",
     "KNOCK", "LEMON", "MANGO", "NOBLE", "OCEAN", "PRIDE", "QUILT", "RAVEN", "SPINE", "TOAST",
-    "UMBRA", "MINER", "WHALE", "WHERE", "YIELD", "ZEBRA", "ADORE", "BEAST", "CHARM", "DRAIN",
+    "UMBRA", "MINER", "WHALE", "SUGAR", "YIELD", "ZEBRA", "ADORE", "BEAST", "CHARM", "DRAIN",
     "WHITE", "FANCY", "GLOVE", "HEART", "INDEX", "JUMBO", "KNIFE", "LIGHT", "MIRTH", "NEXUS",
     "ORBIT", "PEARL", "QUACK", "RUSTY", "SAUCE", "TRICK", "URBAN", "VOWEL", "WITTY", "CARDS",
     "YOUTH", "ZESTY", "ANGRY", "BLAZE", "CRAFT", "SIXTH", "FROST", "GIANT", "LOSES",
