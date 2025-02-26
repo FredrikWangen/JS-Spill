@@ -103,6 +103,13 @@ function sjekkOrd() {
             boks.classList.add("feil")
         }
     }
+    if (riktigAntall == 5) {
+        spillFerdig = true
+
+        GameOver.innerHTML = "Du vant"
+        GameOver.classList.add("taper")
+
+    }
     if (NyLinje >= 25) {
         GameOver.innerHTML = "Game Over"
         GameOver.classList.add("taper")
@@ -115,13 +122,7 @@ function sjekkOrd() {
 
 
     }
-    if (riktigAntall == 5) {
-        spillFerdig = true
-
-        GameOver.innerHTML = "Du vant"
-        GameOver.classList.add("taper")
-
-    }
+    
     
 }
 
